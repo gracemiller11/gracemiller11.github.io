@@ -1,0 +1,1259 @@
+:: StoryTitle
+Garden
+
+
+:: StoryData
+{
+  "ifid": "944DD141-EA85-40D3-ABFD-1BA40C5597F1",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Start",
+  "tag-colors": {
+    "startup": "yellow",
+    "footer": "purple",
+    "''YOUR-DISCOVERIES''--(if:-$keyFound)[🔑-Key-·-]--(if:-$flowerFound)[🌼-Golden-Flower-·-]--(if:-$letterFound)[✉-Forgotten-Letter-·-]--(if:-$clockFound)[🕰-Golden-Clock-·-]--(if:-$libraryFound)[📖-Library-Memory]--[[Return-to-Garden-Entrance->Garden-Entrance]]": "purple",
+    "heaviness": "blue",
+    "excess": "purple",
+    "clearing": "green"
+  },
+  "zoom": 1
+}
+
+
+:: Bedroom [clearing] {"position":"1250,1725","size":"100,100"}
+''THE BEDROOM''
+
+You step into a quiet bedroom.
+
+The colors are muted.
+
+A bed sits beside a small table.
+
+There are photographs, books, and unfinished paintings.
+
+You notice that the objects in this room resemble things you discovered throughout the garden.
+
+A journal lies open.
+
+"Sometimes I feel like I am living in two different worlds.
+
+But they both belong to me."
+
+You begin to understand.
+
+The garden was never just a garden.
+
+It was someone's mind.
+
+[[Examine the photograph->Photograph]]
+
+
+:: Central Clearing [clearing] {"position":"1050,1600","size":"100,100"}
+# THE CENTRAL CLEARING
+
+The garden becomes strangely quiet.
+
+You finally reach the center of the maze.
+
+A circular stone platform stands before you.
+
+The flowers around it resemble the ones
+you discovered at the beginning.
+
+(if: $visitedLeft and $visitedRight and $gateOpen and $symbolSolved)[
+
+The symbols on the platform illuminate.
+
+A portal begins to form.
+
+(set: $portalOpen to true)
+
+You hear a voice:
+
+"You have walked through my thoughts.
+
+But you have not yet met me."
+
+[[Approach the portal->Portal]]
+
+]
+(else:)[
+
+The platform remains dormant.
+
+You feel that something is still missing.
+
+[[Return to the maze->Overgrown Path]]
+
+]
+
+
+:: Changing Landscape [clearing] {"position":"1250,1475","size":"100,100"}
+# THE CHANGING LANDSCAPE
+
+The world begins to change around you.
+
+(if: $ideas >= 4)[
+
+The colors seem increasingly intense.
+
+Objects move before you can focus on them.
+
+You hear several overlapping voices.
+
+There is so much happening
+that you struggle to process it.
+
+]
+
+(else:)[
+
+The world continues to shift.
+
+The flowers move through the air.
+
+The sky changes color.
+
+You feel both fascinated and disoriented.
+
+]
+
+You begin to wonder whether
+this place is really an escape.
+
+A small building appears in the distance.
+
+[[Approach the building->Gardener's Journal]]
+
+
+:: Cracked Mirror [heaviness] {"position":"875,850","size":"100,100"}
+# THE CRACKED MIRROR
+
+A large mirror stands between two trees.
+
+Your reflection looks unfamiliar.
+
+You notice several cracks running across the glass.
+
+You lean closer.
+
+The reflection looks exhausted.
+
+A message is engraved into the frame:
+
+"Is this how you see yourself?"
+
+(set: $awareness to $awareness + 1)
+
+[[Continue down the pathway->Forgotten Letter]]
+
+
+:: Ending [clearing] {"position":"1425,1475","size":"100,100"}
+''THE GARDENER''
+
+(if: $endingChoice is "understand")[
+You look around the garden.
+
+You have learned its pathways.
+
+You have discovered its memories.
+
+But exploring someone's mind does not mean you have experienced their life.
+
+The garden is still unfamiliar.
+]
+(else-if: $endingChoice is "uncertain")
+[
+You look around the garden.
+
+You recognize that there are things you cannot fully comprehend.
+
+Perhaps acknowledging that is the beginning of understanding.
+]
+(else-if: $endingChoice is "listen")
+[
+You look around the garden.
+
+You realize that observing someone's experiences is not the same as living them.
+
+You may never fully understand what the Gardener experiences.
+
+But you can listen.
+]
+(else:)[
+You pause, unsure how to answer.
+
+Perhaps the most honest beginning is to remain curious and listen.
+]
+
+The flowers begin to move in the breeze.
+
+For the first time, the garden feels peaceful.
+
+A final message appears:
+
+"You came looking for a way out.
+
+But perhaps the garden was never a place to escape.
+
+Perhaps it was a place to learn how to look."
+
+''THE END.''
+
+Thank you for exploring the Gardener's world.
+
+(link: "Begin a new journey")[(restart:)]
+
+
+:: Endless Staircase [heaviness] {"position":"875,725","size":"100,100"}
+# THE ENDLESS STAIRCASE
+
+A staircase disappears into the fog.
+
+You begin climbing.
+
+One step.
+
+Another step.
+
+Another.
+
+The top never seems to get closer.
+
+You wonder whether reaching the top will actually change anything.
+
+A message appears on the wall:
+
+"Sometimes the hardest part is simply beginning."
+
+[[Continue through the trees->Cracked Mirror]]
+
+
+:: Final Question [clearing] {"position":"1250,2100","size":"100,100"}
+''THE FINAL QUESTION''
+
+You have explored the garden.
+
+You have experienced its heaviness and its overwhelming brightness.
+
+You have discovered its memories.
+
+You have learned about the Gardener.
+
+A final message appears:
+
+"You have walked through my garden.
+
+You've seen my flowers bloom and wither.
+
+You've opened my doors and followed my paths.
+
+So tell me.
+
+What have you learned?"
+
+(link: "I think I understand what it feels like.")[
+(set: $endingChoice to "understand")
+(go-to: "Ending")
+]
+
+(link: "I don't think I can fully understand.")[
+(set: $endingChoice to "uncertain")
+(go-to: "Ending")
+]
+
+(link: "I cannot fully understand, but I can listen.")[
+(set: $endingChoice to "listen")
+(go-to: "Ending")
+]
+
+
+:: Floating Garden [clearing] {"position":"1050,1975","size":"100,100"}
+# THE FLOATING GARDEN
+
+You discover a garden filled with floating objects.
+
+Stars.
+
+Books.
+
+Paintings.
+
+Unfinished projects.
+
+Everything seems equally important.
+
+You feel drawn toward every object.
+
+(link: "Follow the floating books")[
+    (set: $ideas to $ideas + 1)
+    (go-to: "Changing Landscape")
+]
+
+(link: "Explore the glowing flowers")[
+    (set: $ideas to $ideas + 1)
+    (go-to: "Changing Landscape")
+]
+
+
+:: Floating Library [excess] {"position":"1000,1100","size":"100,100"}
+# THE FLOATING LIBRARY
+
+Books float around you.
+
+Each contains a different story.
+
+One book begins speaking.
+
+Another opens by itself.
+
+A third book falls directly into your hands.
+
+You feel compelled to explore everything.
+
+What will you do?
+
+[[Read one book carefully->Library Memory]]
+
+[[Try to explore everything at once->Unfinished Projects]]
+
+
+:: Flower Result [heaviness] {"position":"600,1000","size":"100,100"}
+# THE FLOWER BED
+
+(if: $weight is 1)[
+You manage to water the flowers.
+
+One begins to bloom.
+]
+
+(if: $weight is 2)[
+You struggle to continue.
+
+The watering can feels heavier than before.
+
+You sit down beside the flowers.
+]
+
+(if: $weight >= 3)[
+You look at the flowers.
+
+Even beginning another task feels exhausting.
+
+You wonder why something so small
+can feel so difficult.
+]
+
+A small pathway leads out of the greenhouse.
+
+[[Follow the pathway->Overgrown Path]]
+
+
+:: Forgotten Fountain [heaviness] {"position":"600,1250","size":"100,100"}
+# THE FORGOTTEN FOUNTAIN
+
+A dry fountain stands in the center of the pathway.
+
+Three symbols are carved into its surface.
+
+A key.
+
+A flower.
+
+A letter.
+
+You recognize them from your journey.
+
+(if: $keyFound)[
+The key symbol begins to glow.
+]
+
+(if: $flowerFound)[
+The flower symbol begins to glow.
+]
+
+(if: $letterFound)[
+The letter symbol begins to glow.
+]
+
+You hear a faint mechanical sound.
+
+Something is hidden nearby.
+
+[[Investigate the garden shed->Garden Shed]]
+
+
+:: Forgotten Letter [heaviness] {"position":"875,975","size":"100,100"}
+# THE FORGOTTEN LETTER
+
+You discover an unfinished letter beneath a flowerpot.
+
+The handwriting is difficult to read.
+
+"I don't know how to explain it.
+
+Sometimes getting out of bed feels like climbing a mountain.
+
+I know there are things I should do.
+
+I just cannot seem to find the energy to begin."
+
+(if: $letterFound is false)[
+    (set: $letterFound to true)
+    (set: $memory to $memory + 1)
+]
+
+You place the letter in your pocket.
+
+[[Continue toward the greenhouse->Overgrown Greenhouse]]
+
+
+:: Garden Entrance {"position":"875,350","size":"100,100"}
+# THE MAZE ENTRANCE
+
+You try to look beyond past the trees and hedges, and realize you are in a gigantic garden.
+
+A rusted iron gate hangs open in front of you.
+
+Beyond it, two pathways twist and turn away from each other.
+
+One is dark, overgrown, and strangely quiet.
+
+The other glows with an unusual golden light, almost breathing on its own.
+
+A wooden sign reads:
+
+"Every path leads somewhere.
+Not every path leads you home."
+
+[[Approach the signpost->Signpost]]
+
+
+:: Garden Shed [heaviness] {"position":"600,1375","size":"100,100"}
+# THE GARDEN SHED
+
+An old wooden shed stands behind the fountain.
+
+Inside, you discover gardening tools,
+old photographs, and scattered notes.
+
+A small inscription is written on the wall:
+
+"Three things are needed to remember."
+
+You recognize the symbols from the fountain.
+
+A narrow path leads toward a large gate.
+
+[[Continue toward the gate->Locked Gate]]
+
+
+:: Gardener's Journal [clearing] {"position":"1250,1600","size":"100,100"}
+''THE GARDENER'S JOURNAL''
+
+An old journal rests on a wooden table.
+
+You open it.
+
+The handwriting is familiar.
+
+You begin reading.
+
+"Sometimes I feel like my thoughts are moving faster than I can write them."
+
+"Sometimes getting out of bed feels impossible."
+
+"Sometimes I have so many plans that I cannot decide where to begin."
+
+You recognize the two gardens.
+
+The heaviness.
+
+The brightness.
+
+They both belong to the same person.
+
+(if: $journalFound is false)[
+(set: $journalFound to true)
+(set: $memory to $memory + 1)
+(set: $awareness to $awareness + 1)
+]
+
+A final entry catches your attention:
+
+"I wish people understood that I am still myself, even when my experiences change."
+
+[[Explore the nearby bedroom->Bedroom]]
+
+
+:: Gardener's Voice [clearing] {"position":"1250,1975","size":"100,100"}
+''THE GARDENER'S VOICE''
+
+The room becomes quiet.
+
+You hear a voice.
+
+"I know you have been exploring my garden."
+
+"You have seen the flowers."
+
+"You have followed the pathways."
+
+"You have discovered some of my memories."
+
+"But I wonder what you think you have learned."
+
+A pause.
+
+"My experiences are complicated.
+
+Some days are difficult.
+
+Some days are overwhelming.
+
+But I am more than either of those experiences."
+
+The voice becomes softer.
+
+"I am still here."
+
+(if: $voiceHeard is false)[
+    (set: $voiceHeard to true)
+    (set: $awareness to $awareness + 1)
+]
+
+[[Continue->Final Question]]
+
+
+:: Golden Clock [excess] {"position":"1000,975","size":"100,100"}
+# THE GOLDEN CLOCK
+
+A golden clock floats in the air.
+
+Its hands spin rapidly.
+
+You cannot tell whether time is moving forward or backward.
+
+You look away for a moment.
+
+When you look back, the clock has changed again.
+
+(if: $clockFound is false)[
+    (set: $clockFound to true)
+    (set: $memory to $memory + 1)
+]
+
+A message appears:
+
+"Do you remember how long you have been here?"
+
+[[Follow the floating books->Floating Library]]
+
+
+:: Golden Flower [excess] {"position":"1125,725","size":"100,100"}
+# THE GOLDEN FLOWER
+
+A glowing golden flower catches your attention.
+
+It seems almost impossible to look away.
+
+You reach toward it.
+
+(if: $flowerFound is false)[
+    (set: $flowerFound to true)
+    (set: $ideas to $ideas + 1)
+]
+
+The flower glows brighter.
+
+For a moment, everything feels possible.
+
+You notice a staircase in the distance.
+
+[[Continue toward the staircase->Infinite Staircase]]
+
+
+:: Infinite Staircase [excess] {"position":"1000,850","size":"100,100"}
+# THE INFINITE STAIRCASE
+
+The staircase stretches upward beyond the clouds.
+
+You begin climbing.
+
+The higher you go, the more possibilities appear.
+
+A castle.
+
+A floating library.
+
+An entire world waiting to be explored.
+
+You feel as though you could accomplish everything.
+
+But which direction should you take?
+
+(set: $ideas to $ideas + 1)
+
+[[Climb toward the golden clock->Golden Clock]]
+
+
+:: Inventory {"position":"450,225","size":"100,100"}
+YOUR DISCOVERIES
+
+You look through the objects
+you have collected during your journey.
+
+(if: $keyFound)[
+🔑 THE BRASS KEY
+
+Found beneath the watering can.
+]
+(else:)[
+🔒 The Brass Key
+
+You haven't discovered this yet.
+]
+
+(if: $flowerFound)[
+🌼 THE GOLDEN FLOWER
+
+Found in the Garden of Excess.
+]
+(else:)[
+🔒 The Golden Flower
+
+You haven't discovered this yet.
+]
+
+(if: $letterFound)[
+✉ THE FORGOTTEN LETTER
+
+A message from the Gardener.
+]
+(else:)[
+🔒 The Forgotten Letter
+
+You haven't discovered this yet.
+]
+
+(if: $clockFound)[
+🕰 THE GOLDEN CLOCK
+
+A strange object that seems
+to distort your perception of time.
+]
+(else:)[
+🔒 The Golden Clock
+
+You haven't discovered this yet.
+]
+
+(if: $libraryFound)[
+📖 THE LIBRARY MEMORY
+
+A glimpse into the Gardener's thoughts.
+]
+(else:)[
+🔒 The Library Memory
+
+You haven't discovered this yet.
+]
+
+---
+
+[[Return to where I was->Garden Entrance]]
+
+
+:: Left Garden [heaviness] {"position":"812.5,600","size":"100,100"}
+# THE GARDEN OF HEAVINESS
+
+(set: $visitedLeft to true)
+
+The air feels thick.
+
+The flowers are wilted.
+The trees bend toward the ground.
+
+You notice that the pathway seems much longer than before.
+
+There is a strange stillness here.
+
+You see a watering can beside a dying flower bed.
+
+[[Approach the watering can->Watering Can]]
+
+[[Walk toward the staircase->Endless Staircase]]
+
+
+:: Library Memory [excess] {"position":"1062.5,1225","size":"100,100"}
+# THE FIRST BOOK
+
+You open the first book.
+
+Its pages are filled with handwritten notes.
+
+"I have so many ideas.
+
+Sometimes they arrive faster than I can write them down.
+
+I feel like I can accomplish everything."
+
+You turn the page.
+
+The handwriting becomes increasingly difficult to follow.
+
+(if: $libraryFound is false)[
+    (set: $libraryFound to true)
+    (set: $memory to $memory + 1)
+]
+(set: $awareness to $awareness + 1)
+
+[[Continue through the library->Unfinished Projects]]
+
+
+:: Locked Gate [heaviness] {"position":"600,1500","size":"100,100"}
+# THE LOCKED GATE
+
+A large iron gate blocks your path.
+
+Three symbols are engraved into the stone.
+
+A key.
+
+A flower.
+
+A letter.
+
+(if: $visitedLeft and $visitedRight)[
+You recognize both sides of the garden.
+]
+
+(else:)[
+You feel that you haven't explored
+the entire garden yet.
+]
+
+(if: $keyFound)[
+The key symbol glows.
+]
+(else:)[
+The key symbol remains dark.
+]
+
+(if: $flowerFound)[
+The flower symbol glows.
+]
+(else:)[
+The flower symbol remains dark.
+]
+
+(if: $letterFound)[
+The letter symbol glows.
+]
+(else:)[
+The letter symbol remains dark.
+]
+
+(if: $visitedLeft and $visitedRight and $keyFound and $flowerFound and $letterFound)[
+
+All three symbols begin to glow.
+
+The gate unlocks.
+
+(set: $gateOpen to true)
+
+[[Enter the memory room->Memory Room]]
+
+]
+(else:)[
+
+The gate remains closed.
+
+Something is missing.
+
+[[Return to the signpost->Signpost]]
+
+]
+
+
+:: Memory Room [heaviness] {"position":"600,1625","size":"100,100"}
+(if: $gateOpen)[
+# THE MEMORY ROOM
+
+The gate opens into a strange room.
+
+Objects from both gardens are scattered across the floor.
+
+The watering can.
+
+The golden flower.
+
+The unfinished letter.
+
+You begin to understand that these objects
+are connected to something personal.
+
+(if: $letterFound)[
+You recognize the handwriting
+from the forgotten letter.
+]
+
+(if: $clockFound)[
+You remember the strange golden clock.
+]
+
+(set: $awareness to $awareness + 1)
+
+A stone wall contains three circular symbols.
+
+Perhaps they form a puzzle.
+
+[[Examine the three symbols->Three Symbols]]
+]
+(else:)[
+# THE MEMORY ROOM
+
+The gate is still locked. You cannot enter yet.
+
+[[Return to the locked gate->Locked Gate]]
+]
+
+
+:: Navigation [footer] {"position":"575,225","size":"100,100"}
+---
+
+(link: " YOUR DISCOVERIES")[
+    (go-to: "Inventory")
+]
+
+[[Return to Garden Entrance->Garden Entrance]]
+
+
+:: Overgrown Greenhouse [heaviness] {"position":"875,1100","size":"100,100"}
+# THE OVERGROWN GREENHOUSE
+
+You enter an old greenhouse.
+
+Plants cover the walls.
+
+Some flowers are blooming.
+Others have completely withered.
+
+A gardening table sits in the center.
+
+You notice a small journal beneath the leaves.
+
+Its pages are blank.
+
+You wonder whether someone once spent a lot of time here.
+
+(set: $awareness to $awareness + 1)
+
+[[Explore the sleeping flowers->Sleeping Flowers]]
+
+
+:: Overgrown Path [heaviness] {"position":"600,1125","size":"100,100"}
+# THE OVERGROWN PATH
+
+The pathways begin to merge.
+
+The flowers become unfamiliar.
+
+You recognize objects from both sides of the garden.
+
+The air feels different here.
+
+You notice a stone fountain in the distance.
+
+[[Approach the fountain->Forgotten Fountain]]
+
+
+:: Photograph [clearing] {"position":"1250,1850","size":"100,100"}
+''THE PHOTOGRAPH''
+
+You pick up an old photograph.
+
+It shows someone standing in the middle of the garden.
+
+You recognize the flowers.
+
+The trees.
+
+The pathways.
+
+It is the Gardener.
+
+The person whose memories you have been discovering.
+
+On the back of the photograph is a handwritten message:
+
+"Please remember that I am still the same person."
+
+(if: $photoFound is false)[
+(set: $photoFound to true)
+(set: $memory to $memory + 1)
+]
+
+You realize that you have been observing someone's internal world.
+
+But you have never actually met them.
+
+[[Listen to the Gardener->Gardener's Voice]]
+
+
+:: Portal [clearing] {"position":"1050,1725","size":"100,100"}
+# THE PORTAL
+
+(if: $portalOpen)[
+
+The portal begins to shimmer.
+
+Its surface reflects everything
+you have experienced.
+
+The wilted flowers.
+
+The golden staircase.
+
+The strange clock.
+
+The forgotten letter.
+
+For a moment, you feel as though
+you are floating outside yourself.
+
+A voice whispers:
+
+"Come and see."
+
+[[Step through the portal->Unfamiliar Sky]]
+
+]
+(else:)[
+
+The portal remains closed.
+
+[[Return to the clearing->Central Clearing]]
+
+]
+
+
+:: Right Garden [excess] {"position":"937.5,600","size":"100,100"}
+# THE GARDEN OF EXCESS
+
+(set: $visitedRight to true)
+
+Everything seems brighter.
+
+Flowers glow without sunlight.
+
+The trees stretch toward the sky.
+
+You hear several voices calling from different directions.
+
+There is so much to explore.
+
+A golden flower catches your attention.
+
+[[Approach the talking flowers->Talking Flowers]]
+
+[[Follow the glowing pathway->Golden Flower]]
+
+
+:: Setup [startup] {"position":"675,325","size":"100,100"}
+(set: $weight to 0)
+(set: $ideas to 0)
+(set: $memory to 0)
+(set: $awareness to 0)
+
+(set: $keyFound to false)
+(set: $flowerFound to false)
+(set: $letterFound to false)
+(set: $clockFound to false)
+(set: $libraryFound to false)
+
+(set: $visitedLeft to false)
+(set: $visitedRight to false)
+
+(set: $gateOpen to false)
+(set: $symbolSolved to false)
+(set: $portalOpen to false)
+
+(set: $journalFound to false)
+(set: $photoFound to false)
+(set: $voiceHeard to false)
+
+(set: $libraryChoice to "none")
+(set: $endingChoice to "none")
+
+
+:: Signpost {"position":"875,475","size":"100,100"}
+# THE SIGNPOST
+
+Two wooden arrows point in opposite directions.
+
+The left arrow reads:
+
+"THE GARDEN OF HEAVINESS"
+
+The right arrow reads:
+
+"THE GARDEN OF EXCESS"
+
+You feel that both paths are important.
+
+Where will you begin?
+
+[[Explore the left garden->Left Garden]]
+
+[[Explore the right garden->Right Garden]]
+
+
+:: Sleeping Flowers [heaviness] {"position":"875,1225","size":"100,100"}
+# THE SLEEPING FLOWERS
+
+A row of flowers needs watering.
+
+You know what you need to do.
+
+But somehow, beginning feels difficult.
+
+(link: "Try watering the flowers")[
+    (set: $weight to $weight + 1)
+    (go-to: "Flower Result")
+]
+
+
+:: Start {"position":"875,175","size":"100,100"}
+# THE SECRET GARDEN
+
+You open your eyes.
+
+Blooming flowers and vines surround you. Tall twisting trees reach toward 
+an unfamiliar sky.
+
+You can't remember how you arrived.
+
+The air smells of wet soil and metal gardening tools.
+
+You feel the ground shake, and hear a faint voice.
+
+"Are you lost?"
+
+You turn around.
+
+There is nobody there, just a stone wall overgrown with the garden's plants.
+
+[[Begin exploring->Garden Entrance]]
+
+
+:: Symbols Unlocked [heaviness] {"position":"1050,1475","size":"100,100"}
+(if: $gateOpen and $symbolSolved)[
+# THE SYMBOLS UNLOCKED
+
+The key begins to glow.
+
+The flower opens.
+
+The letter unfolds.
+
+A deep sound echoes through the room.
+
+The wall begins to move.
+
+Behind it, you discover a circular clearing.
+
+You have finally reached the center of the maze.
+
+[[Enter the clearing->Central Clearing]]
+]
+(else:)[
+# THE SYMBOLS REMAIN QUIET
+
+The puzzle has not been solved yet.
+
+[[Return to the three symbols->Three Symbols]]
+]
+
+
+:: Talking Flowers [excess] {"position":"1000,725","size":"100,100"}
+# THE TALKING FLOWERS
+
+Three flowers begin speaking simultaneously.
+
+The red flower wants you to find a key.
+
+The blue flower wants you to collect a star.
+
+The yellow flower wants you to follow a butterfly.
+
+All three sound equally important.
+
+You try to decide which one to follow.
+
+But another flower begins speaking.
+
+"Why are you standing still?
+There is so much to do!"
+
+(set: $ideas to $ideas + 1)
+
+What will you do?
+
+[[Follow the red flower->Golden Flower]]
+
+[[Follow the blue flower->Infinite Staircase]]
+
+
+:: Three Symbols [heaviness] {"position":"600,1750","size":"100,100"}
+(if: $gateOpen)[
+# THE THREE SYMBOLS
+
+Three symbols appear before you.
+
+A key.
+
+A flower.
+
+A letter.
+
+An inscription reads:
+
+"Unlock what is hidden.
+Remember what has grown.
+Read what was left behind."
+
+You think you understand.
+
+(link: "Key, Flower, Letter")[(set: $symbolSolved to true)(go-to: "Symbols Unlocked")]
+
+(link: "Flower, Letter, Key")[ (go-to: "Wrong Sequence") ]
+
+(link: "Letter, Key, Flower")[ (go-to: "Wrong Sequence") ]
+]
+(else:)[
+# THE THREE SYMBOLS
+
+The puzzle is beyond the locked gate. You must open the gate first.
+
+[[Return to the locked gate->Locked Gate]]
+]
+
+
+:: Unfamiliar Sky [clearing] {"position":"1050,1850","size":"100,100"}
+# THE UNFAMILIAR SKY
+
+You step through the portal.
+
+Everything changes.
+
+The sky stretches endlessly.
+
+Flowers float above the ground.
+
+The world feels limitless.
+
+For a moment, everything seems possible.
+
+You feel weightless.
+
+You feel as though you could go anywhere
+and accomplish anything.
+
+But something about the world feels unfamiliar.
+
+A voice whispers:
+
+"Why would you ever want to leave?"
+
+[[Explore the floating garden->Floating Garden]]
+
+
+:: Unfinished Projects [excess] {"position":"1187.5,1225","size":"100,100"}
+# UNFINISHED PROJECTS
+
+You discover a room filled with unfinished projects.
+
+Paintings.
+
+Books.
+
+Inventions.
+
+Maps.
+
+Everything seems equally important.
+
+(if: $ideas >= 2)[
+You find yourself jumping between activities.
+
+Before finishing one, another possibility catches your attention.
+
+The room seems to grow larger.
+]
+
+(else:)[
+You explore the room.
+
+Each object seems to hold a different possibility.
+]
+
+You notice a pathway leading away from the library.
+
+[[Follow the pathway->Overgrown Path]]
+
+
+:: Watering Can [heaviness] {"position":"725,725","size":"100,100"}
+# THE WATERING CAN
+
+A small watering can rests beside a row of dying flowers.
+
+You know what needs to be done.
+
+The flowers need water.
+
+It should be simple.
+
+(link: "Try to lift the watering can")[
+    (set: $weight to $weight + 1)
+    (go-to: "Watering Result")
+]
+
+
+:: Watering Result [heaviness] {"position":"500,500","size":"100,100"}
+# THE FLOWERS
+
+(if: $weight is 1)[
+You manage to lift the watering can.
+
+You water one flower.
+
+It took much more effort than expected.
+
+Beneath the can, you discover a small brass key.
+
+(set: $keyFound to true)
+]
+
+(if: $weight > 1)[
+You have already tried to water the flowers.
+
+The can remains beside them.
+]
+
+[[Continue toward the staircase->Endless Staircase]]
+
+
+:: Wrong Sequence [heaviness] {"position":"900,1475","size":"100,100"}
+# THE WRONG SEQUENCE
+
+You touch the symbols.
+
+Nothing happens.
+
+The room becomes quiet again.
+
+Perhaps the inscription
+was trying to tell you something.
+
+[[Try again->Three Symbols]]
